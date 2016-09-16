@@ -1,0 +1,25 @@
+name: memcached-noise
+version: 1.4.31-p1
+summary: Memcached server
+description: Memcached is an in-memory key-value store for
+  small chunks of arbitrary data (strings, objects) from
+  results of database calls, API calls, or page rendering.
+confinement: strict
+grade: stable
+
+apps:
+  memcached:
+    command: memcached
+    daemon: simple
+    plugs: [network, network-bind]
+  
+parts:
+  memcached:
+    plugin: autotools
+    #source: https://github.com/memcached/memcached.git
+    #source-tag: 1.4.31
+    source: https://github.com/noise/memcached.git
+    source-branch: snapping
+    build-packages:
+      - libevent-dev
+

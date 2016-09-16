@@ -6248,7 +6248,8 @@ int main (int argc, char **argv) {
     }
 
     /* lose root privileges if we have them */
-    if (getuid() == 0 || geteuid() == 0) {
+    /* temp. disable due to https://bugs.launchpad.net/snappy/+bug/1617314 */
+    if (0 && (getuid() == 0 || geteuid() == 0)) {
         if (username == 0 || *username == '\0') {
             fprintf(stderr, "can't run as root without the -u switch\n");
             exit(EX_USAGE);
